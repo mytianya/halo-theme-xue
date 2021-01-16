@@ -51,7 +51,6 @@
             </div>
         </header>
         <div class="article-content content-container" id="gallery-content">
-
             <div id="original" style="display: none">${post.originalContent?replace("<", "&lt;")?replace(">", "&gt;")}</div>
             <div class="container mx-auto px-4 md-content mt-8 max-w-6xl tracking-wider md:leading-relaxed sm:leading-normal cn-pd ct-container loading"
                  id="write" >
@@ -61,6 +60,10 @@
                 <aside id="toc" class="toc"></aside>
             </#if>
         </div>
+
+            <div class="container mx-auto px-4 mt-8 max-w-6xl tracking-wider md:leading-relaxed sm:leading-normal  cn-pd ct-container coffee-tags">
+                <#include "module/widget/resource.ftl">
+            </div>
 
         <div class="container mx-auto px-4 mt-8 max-w-6xl tracking-wider md:leading-relaxed sm:leading-normal  cn-pd ct-container coffee-tags">
             <blockquote class="post-copyright">
