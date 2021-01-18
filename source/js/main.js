@@ -299,7 +299,7 @@ var bilibili = /\[bilibili:\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\]/g;
 
 var blockReg = /\${2}([\s\S]*?)\${2}/g;
 var inlineReg = /\$([\s\S]*?)\$/g;
-
+var codeReg=/```([\S\s]+)```/g;
 /**
  * 格式化公式
  */
@@ -318,22 +318,34 @@ function formatMath(kateBlock, isBlock) {
     });
     return isBlock ? `<div style="text-align: center; margin: 1rem auto;">${html}</div>` : html;
 }
-
+function filterCode(kateBlock,codeBlocks){
+    for(let i=0;i<codeBlocks.length;i++){
+        if(codeBlocks[i].indexOf(kateBlock)!=-1){
+            return true;
+        }
+    }
+    return false;
+}
 /**
  * 处理公式
  */
 function dealMathx(content) {
     if (openKatex) {
+        var codeBlocks=content.match(codeReg);
         var kateBlocks = content.match(blockReg);
         if (kateBlocks && kateBlocks.length > 0) {
             for (let i = 0; i < kateBlocks.length; i++) {
-                content = content.replace(kateBlocks[i], formatMath(kateBlocks[i], true));
+                if(!filterCode(kateBlocks[i],codeBlocks)){
+                    content = content.replace(kateBlocks[i], formatMath(kateBlocks[i], true));
+                }
             }
         }
         var kateInlines = content.match(inlineReg);
         if (kateInlines && kateInlines.length > 0) {
             for (let i = 0; i < kateInlines.length; i++) {
-                content = content.replace(kateInlines[i], formatMath(kateInlines[i], false));
+                if(!filterCode(kateInlines[i],codeBlocks)){
+                    content = content.replace(kateInlines[i], formatMath(kateInlines[i], false));
+                }
             }
         }
     }
