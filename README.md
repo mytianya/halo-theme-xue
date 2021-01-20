@@ -1,18 +1,8 @@
-<h1 align="center"><a href="https://github.com/halo-dev" target="_blank">Halo</a></h1>
-
-> Halo 是一款现代化的个人独立博客系统，给习惯写博客的同学多一个选择。
-
-<p align="center">
-<a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/halo-dev/halo.svg?style=flat-square"/></a>
-<a href="https://github.com/halo-dev/halo/releases"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/halo-dev/halo/total.svg?style=flat-square"></a>
-<a href="https://hub.docker.com/r/ruibaby/halo"><img alt="Docker pulls" src="https://img.shields.io/docker/pulls/ruibaby/halo?style=flat-square"></a>
-<a href="https://github.com/halo-dev/halo/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/halo-dev/halo.svg?style=flat-square"></a>
-<a href="https://travis-ci.org/halo-dev/halo"><img alt="Travis CI" src="https://img.shields.io/travis/halo-dev/halo.svg?style=flat-square"/></a>
-</p>
-
 ------------------------------
+# 扩展支持Mermaid流程图功能[2021-01-20]
+后台配置开启Mermaid流程图，即可以使用Mermaid语法画流程图
 
-# Halo扩展文章资源管理功能
+# 扩展文章资源管理功能[2021-01-12]
 
 > 在Halo当前1.4.2版本上面，扩展管理文章的附件资源地址功能
 

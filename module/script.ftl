@@ -20,7 +20,9 @@
             crossorigin="anonymous"></script>
 </#if>
 
-
+<#if settings.enabled_mermaid!true>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.4/dist/mermaid.min.js"></script>
+</#if>
 <script type="text/javascript">
   // console.clear();
   console.log("%c 有朋自远方来, 不亦说乎.", "background:#24272A; color:#ffffff", "");

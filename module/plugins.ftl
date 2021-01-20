@@ -56,7 +56,11 @@
   <#if settings.enable_code_lineNumber!false> 
     enableLineNumber = typeof lineNumbersBlock === 'function';
   </#if>
-
+  let enableMermaid = false;
+  // 是否开启行号
+  <#if settings.enabled_mermaid!false>
+  enableMermaid = typeof mermaid.initialize === 'function';
+  </#if>
   <#if settings.collpaseCode!false>
      collpaseCode = true
   </#if>

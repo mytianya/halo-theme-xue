@@ -166,19 +166,17 @@ function removeScrollTocFixed() {
 
 function highlightCode() {
     if (enableLineNumber) {
-        $('.md-content  pre>code[class*="language-"]').each(function (i, block) {
+        $('.md-content  pre code:not(.language-mermaid)').each(function (i, block) {
             lineNumbersBlock(block);
         });
     }
 
     if (collpaseCode) {
-        $('.md-content  pre>code[class*="language-"]').each(function (i, block) {
+        $('.md-content  pre code:not(.language-mermaid)').each(function (i, block) {
             $(block).parent().wrap('<details></details>');
             $(block).parent().before('<summary>code</summary>')
         });
     }
-
-
 }
 
 //获取滚动条距离顶部位置
@@ -475,7 +473,7 @@ function formatContent() {
     marked.setOptions({
         renderer: renderer,
         highlight: function (code, language) {
-            if (enableCodeHighlight) {
+            if (enableCodeHighlight&&language!='mermaid') {
                 const validLanguage = hljs.getLanguage(language)
                     ? language
                     : "plaintext";
@@ -495,11 +493,14 @@ function formatContent() {
     persentContent.empty();
     persentContent.removeClass("loading");
     persentContent.html(marked(originalContent.trim()));
-
+    // mermaid
+    Array.from(document.querySelectorAll('pre code.language-mermaid')).forEach(
+        block => mermaid.init(undefined, block)
+    );
     mdContent.remove();
     mdContent = null;
     // 代码行号
-    highlightCode();
+     highlightCode();
 
     // 相册
     loadGallery()
@@ -509,9 +510,26 @@ function formatContent() {
 
     // 图片懒加载
     lazyloadImg()
+    loadMermaid()
     return true;
 }
-
+function loadMermaid(){
+    if(enableMermaid){
+        var mermaidConfig = {
+            startOnLoad:false,
+            theme: 'neutral',
+            sequence:{
+                useMaxWidth:false,
+                htmlLabels:true
+            },
+            flowchart:{
+                useMaxWidth:false,
+                htmlLabels:true
+            }
+        };
+        mermaid.initialize(mermaidConfig);
+    }
+}
 /**
  * 反转义 HTML
  * @param text
