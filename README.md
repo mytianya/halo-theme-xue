@@ -1,7 +1,7 @@
 ------------------------------
 # 扩展支持Mermaid流程图功能[2021-01-20]
 后台配置开启Mermaid流程图，即可以使用Mermaid语法画流程图
-![](https://cdn.jsdelivr.net/gh/mytianya/public-imgbed/img20210120164916.png)
+![image-maid](https://cdn.jsdelivr.net/gh/mytianya/public-imgbed/img20210120164916.png)
 
 # 扩展文章资源管理功能[2021-01-12]
 
